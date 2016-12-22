@@ -1,4 +1,4 @@
-# Growing-Input
+# Growing input
 An HTML input element that grows as you type
 
 ## Usage
