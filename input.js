@@ -29,9 +29,11 @@ function hideMirror() {
     mirror.style.width = ''
 }
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
-})
+if (typeof exports != "undefined") {
+    Object.defineProperty(exports, "__esModule", {
+        value: true
+    })
 
-exports["default"] = Input
-exports["Input"] = Input
+    exports["default"] = Input
+    exports["Input"] = Input
+}
