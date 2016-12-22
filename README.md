@@ -25,5 +25,11 @@ import 'growing-input'
 
 ```html
 <!-- main.html -->
-<growing-input><growing-input>
+<growing-input></growing-input>
+```
+
+## Accessing the underlying input element
+
+```
+document.queryselector('growing-input').nativeElement
 ```
