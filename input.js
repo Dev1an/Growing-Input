@@ -1,40 +1,37 @@
-class Input extends HTMLElement {
+if (Meteor && Meteor.release) require('document-register-element')
+
+const mirror = document.createElement('div')
+hideMirror()
+document.body.appendChild(mirror)
+
+class Input extends HTMLInputElement {
     constructor() {
         super()
 
-        this.nativeElement = document.createElement('input')
-        const mirror = document.createElement('div')
-        hideMirror()
-
-        const shadow = this.attachShadow({mode: 'open'})
-        shadow.appendChild(this.nativeElement)
-        shadow.appendChild(mirror)
-
         const update = () => {
-            mirror.innerText = this.nativeElement.value
-            mirror.style.cssText = getComputedStyle(this.nativeElement).cssText
+            mirror.innerText = this.value
+            mirror.style.cssText = getComputedStyle(this).cssText
             hideMirror()
-            this.nativeElement.style.width = `calc(1em + ${mirror.clientWidth}px)`
+            this.style.width = `calc(1em + ${mirror.clientWidth}px)`
         }
-        this.nativeElement.addEventListener('keypress', update)
-        this.nativeElement.addEventListener('keyup', update)
-        this.nativeElement.addEventListener('keydown', update)
-
-        function hideMirror() {
-            mirror.style.visibility = 'hidden'
-            mirror.style.position = 'absolute'
-            mirror.style.whiteSpace = 'pre'
-            mirror.style.left = '0'
-            mirror.style.width = ''
-        }
+        this.addEventListener('keypress', update)
+        this.addEventListener('keyup', update)
+        this.addEventListener('keydown', update)
     }
 }
+window.customElements.define('growing-input', Input, {extends: 'input'})
 
+function hideMirror() {
+    mirror.style.visibility = 'hidden'
+    mirror.style.position = 'absolute'
+    mirror.style.whiteSpace = 'pre'
+    mirror.style.left = '0'
+    mirror.style.width = ''
+}
 
 Object.defineProperty(exports, "__esModule", {
     value: true
 })
 
-window.customElements.define('growing-input', Input)
 exports["default"] = Input
 exports["Input"] = Input

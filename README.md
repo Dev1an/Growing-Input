@@ -13,23 +13,29 @@ Include the script in your webpage and use the web component!
 
 ```html
 <script type="text/javascript" src="node_modules/growing-input/input.js"></script>
-<growing-input></growing-input>
+<input is="growing-input" />
 ```
 
 ### Using meteor
+
+To use this package in meteor simply import it via javascript's `import` sytax
 
 ```javascript
 // main.js \\
 import 'growing-input'
 ```
 
+After importing, you can use the new element in your HTML
+
 ```html
 <!-- main.html -->
-<growing-input></growing-input>
+<input is="growing-input" />
 ```
 
-## Accessing the underlying input element
+Or you can create the element via javascript
 
-```
-document.queryselector('growing-input').nativeElement
+```javascript
+// main.js \\
+import Input from 'growing-input'
+document.body.appendChild(new Input)
 ```
