@@ -8,15 +8,12 @@ class Input extends HTMLInputElement {
     constructor() {
         super()
 
-        const update = () => {
+        this.addEventListener('input', () => {
             mirror.innerText = this.value
             mirror.style.cssText = getComputedStyle(this).cssText
             hideMirror()
             this.style.width = `calc(1em + ${mirror.clientWidth}px)`
-        }
-        this.addEventListener('keypress', update)
-        this.addEventListener('keyup', update)
-        this.addEventListener('keydown', update)
+        })
     }
 }
 window.customElements.define('growing-input', Input, {extends: 'input'})
