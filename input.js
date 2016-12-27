@@ -2,7 +2,10 @@ if (window.hasOwnProperty('Meteor')) require('document-register-element')
 
 const mirror = document.createElement('div')
 hideMirror()
-document.body.appendChild(mirror)
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.body.appendChild(mirror);
+}, false);
 
 class Input extends HTMLInputElement {
     constructor() {
