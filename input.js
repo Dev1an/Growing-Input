@@ -1,4 +1,4 @@
-if (Meteor && Meteor.release) require('document-register-element')
+if (window.hasOwnProperty('Meteor')) require('document-register-element')
 
 const mirror = document.createElement('div')
 hideMirror()
